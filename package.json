@@ -1,0 +1,15 @@
+{
+  "name": "bugy",
+  "version": "1.0.2",
+  "description": "Модуль, добавляющий дополнительную кнопку в приложения типа VK Mini Apps",
+  "main": "lib/index.js",
+  "files": [
+    "lib/**/*"
+  ],
+  "author": {
+    "name": "DevGG",
+    "url": "https://vk.com/devgg"
+  },
+  "license": "MIT",
+  "keywords": ["VK Mini Apps"]
+}
