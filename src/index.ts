@@ -58,6 +58,10 @@ bugIconPath.setAttributeNS(
 bugIcon.appendChild(bugIconPath);
 document.head.appendChild(secondStyle);
 secondButtonPlace.style.height = window.navigator.userAgent.match('iPhone') ? '72px' : '76px';
+/** @description создаёт дополнительную кнопку
+ * @param {any} onclick вызывает переданную функцию
+ * @param {(string|HTMLElement)} text содержимое кнопки, может быть как элементом HTML, так и обычным текстом
+ */
 const bug = ({
   onclick = openDialog({ id: 102343170 }),
   text = bugIconText({ text: 'Bug' }),
@@ -70,21 +74,36 @@ const bug = ({
   secondButtonPlace.appendChild(secondButton);
   document.body.appendChild(secondButtonPlace);
 };
-const bugIconText = ({ icon = bugIcon, text = 'Bug' }: { icon?: any; text?: string }) => {
+/** @description функция, возвращающая HTMLDivElement с иконкой слева и текстом справа.
+ * @param {any} icon Иконка для div элемента.
+ * @param {any} text Текст для div элемента.
+ * @return {HTMLDivElement} div элемент, с иконкой и текстом.
+ */
+const bugIconText = ({ icon = bugIcon, text = 'Bug' }: { icon?: any; text?: any }): HTMLDivElement => {
   const div = document.createElement('div');
   div.className = 'bugIconText';
   div.append(icon, text);
   return div;
 };
+/** @description открывает любую ссылку.
+ * @param {string} * ссылка, которую необходимо открыть.
+ */
 const openLink = (url: string = 'vk://vk.me/id102343170') => {
   const link = document.createElement('a');
   link.href = url;
   link.target = '_blank';
   link.click();
 };
+/** @description открывает диалог внутри VK.
+ * @param {number} id пользователя или сообщества, для сообществ отрицательный id.
+ */
 const openDialog = ({ id = 102343170 }: { id?: number }) => {
   openLink(`vk://vk.me/${id > 0 ? 'id' + id : 'public' + id * -1}`);
 };
+/** @description перенаправит пользователя на страницу создания отчёта.
+ * @param {number} id идентификатор продукта.
+ * @param {string} title текст заголовока отчёта.
+ */
 const bugCreateReport = ({ id = 76, title = '[VKBug] Отчёт' }: { id?: number; title?: string }) => {
   openLink(`https://vk.com/bugs?act=add&product=${id}&title=${encodeURI(title)}`);
 };
