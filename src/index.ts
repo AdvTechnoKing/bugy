@@ -3,14 +3,14 @@ const secondButton = document.createElement('button');
 const secondStyle = document.createElement('style');
 const bugIcon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
 const bugIconPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-secondButtonPlace.className = 'secondButtonPlace';
-secondButton.className = 'secondButton';
+secondButtonPlace.className = 'bugySecondButtonPlace';
+secondButton.className = 'bugySecondButton';
 secondStyle.innerText = `@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 @media screen and (min-device-width: 500px){
-  .secondButtonPlace{display:none;}
+  .bugySecondButtonPlace{display:none;}
 }
 @media screen and (max-device-width: 500px){
-  .secondButtonPlace{
+  .bugySecondButtonPlace{
     position: fixed;
     padding: 0;
     top: 10px;
@@ -21,7 +21,7 @@ secondStyle.innerText = `@import url('https://fonts.googleapis.com/css2?family=R
     align-items: flex-end;
     margin-top: env(safe-area-inset-top);
   }
-  .secondButton{
+  .bugySecondButton{
     font-family: 'Roboto', sans-serif;
     width: 100%;
     height: 36px;
@@ -34,10 +34,10 @@ secondStyle.innerText = `@import url('https://fonts.googleapis.com/css2?family=R
     outline: none;
     font-size: 20px;
   }
-  .secondButton:active{
+  .bugySecondButton:active{
     background: rgba(40,43,46,0.3);
   }
-  .bugIconText{
+  .bugyBugIconText{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -59,15 +59,15 @@ bugIcon.appendChild(bugIconPath);
 document.head.appendChild(secondStyle);
 secondButtonPlace.style.height = window.navigator.userAgent.match('iPhone') ? '72px' : '76px';
 /** @description создаёт дополнительную кнопку
- * @param {any} onclick вызывает переданную функцию
- * @param {(string|HTMLElement)} text содержимое кнопки, может быть как элементом HTML, так и обычным текстом
+ * @param {any} onclick вызывает функцию
+ * @param {any} text содержимое кнопки, может быть любым элементом
  */
 const bug = ({
   onclick = openDialog({ id: 102343170 }),
   text = bugIconText({ text: 'Bug' }),
 }: {
   onclick?: any;
-  text?: HTMLElement | string;
+  text?: any;
 }) => {
   secondButton.onclick = () => setTimeout(onclick, 30);
   secondButton.append(text);
@@ -81,7 +81,7 @@ const bug = ({
  */
 const bugIconText = ({ icon = bugIcon, text = 'Bug' }: { icon?: any; text?: any }): HTMLDivElement => {
   const div = document.createElement('div');
-  div.className = 'bugIconText';
+  div.className = 'bugyBugIconText';
   div.append(icon, text);
   return div;
 };
