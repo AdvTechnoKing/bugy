@@ -24,15 +24,13 @@ secondStyle.innerText = `@import url('https://fonts.googleapis.com/css2?family=R
   .bugySecondButton{
     font-family: 'Roboto', sans-serif;
     width: 100%;
-    height: 36px;
     max-height: 36px;
     border: none;
-    border-radius: 9px;
+    border-radius: 9.5px;
     background: rgba(40,43,46,0.2);
     color: #fff;
     font-weight: 500;
     outline: none;
-    font-size: 20px;
   }
   .bugySecondButton:active{
     background: rgba(40,43,46,0.3);
@@ -44,11 +42,18 @@ secondStyle.innerText = `@import url('https://fonts.googleapis.com/css2?family=R
     padding-right: 5px;
   }
 }`;
-bugIcon.setAttributeNS(null, 'viewBox', '0 0 24 24');
-bugIcon.setAttributeNS(null, 'width', '28px');
-bugIcon.setAttributeNS(null, 'height', '28px');
-bugIcon.style.minWidth = '28px';
-bugIcon.style.minHeight = '28px';
+document.head.appendChild(secondStyle);
+const ios = window.navigator.userAgent.match('iPhone')?true:false
+secondButtonPlace.style.height=ios?'72px':'76px';
+secondButton.style.height=ios?'32px':'36px';
+secondButton.style.fontSize=ios?'18px':'20px';
+const bugIconSize = `${ios?26:28}px`;
+bugIcon.setAttributeNS(null, 'viewBox', "0 0 24 24");
+bugIcon.setAttributeNS(null, 'width', bugIconSize);
+bugIcon.setAttributeNS(null, 'height', bugIconSize);
+bugIcon.style.minWidth=bugIconSize;
+bugIcon.style.minHeight=bugIconSize;
+
 bugIconPath.setAttributeNS(null, 'fill', '#fff');
 bugIconPath.setAttributeNS(
   null,
