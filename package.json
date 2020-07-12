@@ -1,6 +1,6 @@
 {
   "name": "bugy",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Модуль, добавляющий дополнительную кнопку в приложения типа VK Mini Apps",
   "main": "lib/index.js",
   "files": [
